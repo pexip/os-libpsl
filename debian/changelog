@@ -1,0 +1,110 @@
+libpsl (0.17.0-3) unstable; urgency=medium
+
+  * runtime dependency on libidn2-dev should have been on libidn2-0
+    (Closes: #852418)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 24 Jan 2017 09:36:45 -0500
+
+libpsl (0.17.0-2) unstable; urgency=medium
+
+  * Force a higher runtime dependency on libidn2
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 24 Jan 2017 00:25:56 -0500
+
+libpsl (0.17.0-1) unstable; urgency=medium
+
+  [ Tim Rühsen ]
+  * new upstream release
+
+  [ Daniel Kahn Gillmor ]
+  * Use alioth for debian packaging
+  * Move from libicu to libidn2
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 24 Jan 2017 00:00:56 -0500
+
+libpsl (0.16.1-1) unstable; urgency=medium
+
+  * new upstream release
+
+ -- Tim Rühsen <tim.ruehsen@gmx.de>  Thu, 15 Dec 2016 15:45:07 +0100
+
+libpsl (0.15.0-1) unstable; urgency=medium
+
+  * new upstream release
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 15 Nov 2016 08:40:01 +0900
+
+libpsl (0.14.0-1) unstable; urgency=medium
+
+  * New uptream version; moved from libpsl0 to libpsl5 because of removal
+    of psl_builtin_compile_time()
+  * new psl-make-dafsa package
+  * use upstreamed manpages instead
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Tue, 05 Jul 2016 11:09:09 -0400
+
+libpsl (0.11.0-2) unstable; urgency=medium
+
+  * Recommend the publicsuffix package.
+  * fix psl_builtin_outdated() and update psl --print-info and --version
+    (pulled from upstream)
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Fri, 11 Dec 2015 22:34:03 -0500
+
+libpsl (0.11.0-1) unstable; urgency=medium
+
+  * new upstream release
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Wed, 23 Sep 2015 14:43:00 -0400
+
+libpsl (0.8.1-1) UNRELEASED; urgency=medium
+
+  * new upstream release
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Sat, 15 Aug 2015 13:55:37 +0200
+
+libpsl (0.8.0-1) unstable; urgency=medium
+
+  * new upstream release.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Thu, 06 Aug 2015 15:52:27 -0400
+
+libpsl (0.7.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * switch from autotools-dev to dh_autoreconf
+  * embed SOURCE_DATE_EPOCH for psl_compiled_time() to make build
+    reproducible.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Thu, 09 Jul 2015 10:06:59 -0400
+
+libpsl (0.6.2-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Tim Rühsen <tim.ruehsen@gmx.de>  Fri, 14 Nov 2014 17:51:17 +0100
+
+libpsl (0.6.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Tim Rühsen <tim.ruehsen@gmx.de>  Mon, 10 Nov 2014 21:19:17 +0100
+
+libpsl (0.5.1-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Tim Rühsen <tim.ruehsen@gmx.de>  Sun, 03 Aug 2014 13:08:51 +0200
+
+libpsl (0.5.0-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Tim Rühsen <tim.ruehsen@gmx.de>  Tue, 08 Jul 2014 10:04:10 +0200
+
+libpsl (0.4.0-1) unstable; urgency=low
+
+  * Initial release (Closes: #750709)
+
+ -- Tim Rühsen <tim.ruehsen@gmx.de>  Mon, 23 Jun 2014 12:40:12 -0400
+
