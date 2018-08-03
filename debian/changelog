@@ -1,3 +1,9 @@
+libpsl (0.17.0-3pexip1) pexip; urgency=medium
+
+  * Prepare Pexip packaging
+
+ -- John-Mark Bell <jmb@pexip.com>  Fri, 03 Aug 2018 18:15:36 +0000
+
 libpsl (0.17.0-3) unstable; urgency=medium
 
   * runtime dependency on libidn2-dev should have been on libidn2-0
