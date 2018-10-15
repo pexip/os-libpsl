@@ -43,6 +43,10 @@ docs/libpsl/libpsl.prerequisites
 docs/libpsl/libpsl.signals
 docs/libpsl/version.xml
 docs/libpsl/xml/
+fuzz/*.log
+fuzz/*.trs
+fuzz/*_fuzzer
+fuzz/*_fuzzer.new
 gtk-doc.m4
 gtk-doc.make
 include/libpsl.h
@@ -53,6 +57,8 @@ libpsl.pc
 libtool
 ltmain.sh
 m4/
+msvc/config-msvc.mak
+msvc/config.h.win32
 Makefile
 Makefile.in
 missing

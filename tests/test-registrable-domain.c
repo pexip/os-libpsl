@@ -1,5 +1,5 @@
 /*
- * Copyright(c) 2014-2015 Tim Ruehsen
+ * Copyright(c) 2014-2018 Tim Ruehsen
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -81,7 +81,7 @@ static void testx(const psl_ctx_t *psl, const char *domain, const char *encoding
 			   domain ? domain : "NULL", result ? result : "NULL", expected_result ? expected_result : "NULL");
 	}
 
-	free(lower);
+	psl_free_string(lower);
 }
 
 static void test(const psl_ctx_t *psl, const char *domain, const char *expected_result)
