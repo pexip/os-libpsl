@@ -13,12 +13,6 @@
 #       define _GCC_VERSION_AT_LEAST(major, minor) 0
 #endif
 
-#if _GCC_VERSION_AT_LEAST(4,0)
-#  define _HIDDEN __attribute__ ((visibility ("hidden")))
-#else
-#  define _HIDDEN
-#endif
-
 #define CHECK_LT(a, b) if ((a) >= b) return 0
 
 static const char multibyte_length_table[16] = {
@@ -29,15 +23,15 @@ static const char multibyte_length_table[16] = {
 };
 
 
-/**
- * Get lenght of multibyte character sequence starting at a given byte.
+/*
+ * Get length of multibyte character sequence starting at a given byte.
  * Returns zero if the byte is not a valid leading byte in UTF-8.
  */
 static int GetMultibyteLength(char c) {
 	return multibyte_length_table[((unsigned char)c) >> 4];
 }
 
-/**
+/*
  * Moves pointers one byte forward.
  */
 static void NextPos(const unsigned char** pos,
@@ -203,9 +197,9 @@ static int GetReturnValue(const unsigned char* offset,
  */
 
 /* prototype to skip warning with -Wmissing-prototypes */
-int _HIDDEN LookupStringInFixedSet(const unsigned char*, size_t,const char*, size_t);
+int LookupStringInFixedSet(const unsigned char*, size_t,const char*, size_t);
 
-int _HIDDEN LookupStringInFixedSet(const unsigned char* graph,
+int LookupStringInFixedSet(const unsigned char* graph,
 	size_t length,
 	const char* key,
 	size_t key_length)
@@ -277,9 +271,9 @@ int _HIDDEN LookupStringInFixedSet(const unsigned char* graph,
 }
 
 /* prototype to skip warning with -Wmissing-prototypes */
-int _HIDDEN GetUtfMode(const unsigned char *graph, size_t length);
+int GetUtfMode(const unsigned char *graph, size_t length);
 
-int _HIDDEN GetUtfMode(const unsigned char *graph, size_t length)
+int GetUtfMode(const unsigned char *graph, size_t length)
 {
 	return length > 0 && graph[length - 1] < 0x80;
 }
