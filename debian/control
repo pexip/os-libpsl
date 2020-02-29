@@ -5,26 +5,28 @@ XSBC-Pexip-Original-Maintainer: Tim Rühsen <tim.ruehsen@gmx.de>
 XSBC-Pexip-Original-Uploaders:
  Daniel Kahn Gillmor <dkg@fifthhorseman.net>,
 Build-Depends:
- debhelper (>=10~),
+ debhelper (>= 11~),
 Build-Depends-Arch:
+ autoconf-archive,
  automake,
- dh-autoreconf,
  gtk-doc-tools,
  libidn2-0-dev (>=0.16),
  libunistring-dev,
  pkg-config,
  publicsuffix (>= 20150507),
- python,
-Standards-Version: 3.9.8
+ python3:any,
+Standards-Version: 4.2.1
 Section: libs
 Homepage: https://github.com/rockdaboot/libpsl
-Vcs-Git: https://anonscm.debian.org/git/collab-maint/libpsl -b debian
-Vcs-Browser: https://anonscm.debian.org/git/collab-maint/libpsl
+Vcs-Git: https://salsa.debian.org/debian/libpsl.git
+Vcs-Browser: https://salsa.debian.org/debian/libpsl
+Rules-Requires-Root: no
 XS-Pexip-Upstream: http://ftp.debian.org/debian/ buster
 
 Package: libpsl-dev
 Section: libdevel
 Architecture: any
+Multi-Arch: same
 Depends:
  libpsl5 (= ${binary:Version}),
  ${misc:Depends},
@@ -79,8 +81,9 @@ Description: Explore the Public Suffix List
 Package: psl-make-dafsa
 Section: net
 Architecture: all
+Multi-Arch: foreign
 Depends:
- python:any,
+ python3:any,
  ${misc:Depends},
  ${shlibs:Depends},
 Description: Create a binary DAFSA from a Public Suffix List

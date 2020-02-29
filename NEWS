@@ -1,4 +1,45 @@
-Copyright (C) 2014-2017 Tim Rühsen
+Copyright (C) 2014-2018 Tim Rühsen
+
+26.04.2018 Release V0.20.2
+  * Fix non srcdir builds
+  * Add API decoration
+  * Fix for MSVC/Win32 builds
+  * Detection fallback from libidn2 to libcu, libidn
+  * Fix MinGW cross builds on Linux
+  * Add NMake Makefiles for Visual Studio builds
+
+26.02.2018 Release V0.20.1
+  * Fix issue introduced with PSL_TYPE_NO_STAR_RULE in V0.20.0
+  * Fix SO_VERSION to 8:0:3
+  * Improve unit tests
+
+22.02.2018 Release V0.20.0
+  * Remove hard-coded gcc flag in Makefile.am
+  * Prevent excessive CPU cycles on large inputs
+  * New flag PSL_TYPE_NO_STAR_RULE to skip star rule
+
+09.11.2017 Release V0.19.1
+  * Add the forgotten commit with NEWS and configure.ac
+
+09.11.2017 Release V0.19.0
+  * New function psl_free_string()
+  * psl_make_dafsa now works with python2 and python3
+  * psl_*count() functions now return -1 if info is not available
+  * Fixed unsigned integer overflow in _mem_is_ascii()
+  * Add -fsanitize-address-use-after-scope to --enable-asan if available
+
+20.07.2017 Release V0.18.0
+  * Fix order of files in psl_latest()
+  * Add fuzzing architecture
+  * Fix memleak in _psl_is_public_suffix()
+  * Add configure option --enable-asan (Address sanitizer)
+  * Add configure option --enable-usan (Undefined sanitizer)
+  * Add configure option --enable-cfi (Control Flow Integrity)
+  * Fix finding libidn2 for static builds
+  * Fix use of uninitialized stack value
+  * Fix buffer overflow in libicu build
+  * Use libidn2 as default for builds (former libicu)
+  * Add pkg-config support for libidn and libidn2
 
 16.01.2017 Release V0.17.0
   * Use TR46 non-transitional for IDNA (libicu, libidn2 >= 0.14)
