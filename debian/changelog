@@ -1,3 +1,40 @@
+libpsl (0.21.0-1.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+
+  [ Simon Josefsson ]
+  * B-D on libidn2-dev instead of obsolete libidn2-0-dev. (Closes: #974994)
+
+  [ Sebastian Ramacher ]
+  * debian/patches: Update Platform.sh example in test data (Closes: #966941)
+
+ -- Sebastian Ramacher <sramacher@debian.org>  Thu, 04 Feb 2021 22:56:22 +0100
+
+libpsl (0.21.0-1.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Build the binaries also during indep build, required for
+    installation of psl-make-dafsa.1. (Closes: #953287)
+  * Remove essential diffutils from the test dependencies.
+    (Closes: #955439)
+
+ -- Adrian Bunk <bunk@debian.org>  Sat, 16 May 2020 17:24:03 +0300
+
+libpsl (0.21.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * standards-version: bump to 4.5.0 (no changes needed)
+  * wrap-and-sort -ast for d/tests/control
+  * move to dh 12
+  * import patches from upstream (closes: #945243)
+  * added Build-Depends line to libpsl5.symbols
+  * install manpages from upstream installation, not source
+  * deliberately avoid installing .la files
+  * dh_missing: use --fail-missing
+  * avoid lintian warnings about fuzzer inputs
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Wed, 04 Mar 2020 12:39:16 -0500
+
 libpsl (0.20.2-2) unstable; urgency=medium
 
   * correct dependencies for autopkgtest

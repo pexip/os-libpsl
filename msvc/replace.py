@@ -10,10 +10,8 @@
 # Author: Fan, Chun-wei
 # Date: September 03, 2014
 
-import os
 import sys
 import re
-import string
 import argparse
 
 valid_actions = ['remove-prefix',
@@ -110,6 +108,8 @@ def main(argv):
         output_string = ''
 
     replace(args.input, args.output, input_string, output_string)
+
+    return 0
 
 if __name__ == '__main__':
     sys.exit(main(sys.argv))
