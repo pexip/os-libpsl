@@ -39,9 +39,9 @@ Libpsl...
 
 Find more information about the Public Suffix List [here](https://publicsuffix.org/).
 
-Download the Public Suffix List [here](https://hg.mozilla.org/mozilla-central/raw-file/tip/netwerk/dns/effective_tld_names.dat).
+Download the Public Suffix List [here](https://github.com/publicsuffix/list/blob/master/public_suffix_list.dat).
 
-The DAFSA code has been taken from [Chromium Project](https://code.google.com/p/chromium/).
+The original DAFSA code is from the [Chromium Project](https://code.google.com/p/chromium/).
 
 
 API Documentation
@@ -119,11 +119,19 @@ Download project and prepare sources with
 		make
 		make check
 
+If you prefer a `meson` build
+
+		meson builddir
+		ninja -C builddir
+		ninja -C builddir test
+
+There is also an unofficial MSVC nmake build configuration in `msvc/`.
+
 
 Mailing List
 ------------
 
-[Mailing List Archive](http://news.gmane.org/gmane.network.dns.libpsl.bugs)
+[Mailing List Archive](https://groups.google.com/forum/#!forum/libpsl-bugs)
 
 [Mailing List](https://groups.google.com/forum/#!forum/libpsl-bugs)
 

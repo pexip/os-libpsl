@@ -1,4 +1,9 @@
-DEFS = @DEFS@ -DSRCDIR=\"$(srcdir)\" -DPSL_FILE=\"$(PSL_FILE)\" -DPSL_TESTFILE=\"$(PSL_TESTFILE)\"
+DEFS = @DEFS@ \
+       -DSRCDIR=\"$(srcdir)\" \
+       -DPSL_FILE=\"$(PSL_FILE)\" \
+       -DPSL_TESTFILE=\"$(PSL_TESTFILE)\" \
+       -DPSL_DAFSA=\"psl.dafsa\" \
+       -DPSL_ASCII_DAFSA=\"psl_ascii.dafsa\"
 AM_CPPFLAGS = -I$(top_srcdir)/include
 LDADD = ../src/libpsl.la
 AM_LDFLAGS = -no-install
@@ -28,9 +33,9 @@ TESTS = $(PSL_TESTS)
 # dafsa.psl and dafsa_ascii.psl must be created before any test is executed
 # check-local target works in parallel to the tests, so the test suite will likely fail
 BUILT_SOURCES = psl.dafsa psl_ascii.dafsa
-psl.dafsa:
+psl.dafsa: $(top_srcdir)/list/public_suffix_list.dat
 	$(top_srcdir)/src/psl-make-dafsa --output-format=binary "$(PSL_FILE)" psl.dafsa
-psl_ascii.dafsa:
+psl_ascii.dafsa: $(top_srcdir)/list/public_suffix_list.dat
 	$(top_srcdir)/src/psl-make-dafsa --output-format=binary --encoding=ascii "$(PSL_FILE)" psl_ascii.dafsa
 
 clean-local:

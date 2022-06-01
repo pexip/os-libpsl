@@ -1,2 +1,4 @@
 Tests: psl-test
-Depends: diffutils, publicsuffix, psl
+Depends:
+ psl,
+ publicsuffix,

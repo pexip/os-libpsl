@@ -69,7 +69,7 @@ static void test_psl(void)
 		{ "abc.www.ck", 0, 0 },
 		{ "xxx.ck", 1, 1 },
 		{ "www.xxx.ck", 0, 0 },
-		{ "\345\225\206\346\240\207", 1, 1 }, /* xn--czr694b oder ?? */
+		{ "\345\225\206\346\240\207", 1, 1 }, /* xn--czr694b or ?? */
 		{ "www.\345\225\206\346\240\207", 0, 0 },
 		{ "xn--czr694b", 1, 1 },
 		{ "www.xn--czr694b", 0, 0 },
@@ -125,7 +125,7 @@ static void test_psl(void)
 		}
 	}
 
-	printf("psl_builtin_file_time()=%ld\n", psl_builtin_file_time());
+	printf("psl_builtin_file_time()=%ld\n", (long) psl_builtin_file_time());
 	psl_builtin_file_time() == 0 ? failed++ : ok++;
 
 	printf("psl_builtin_sha1sum()=%s\n", psl_builtin_sha1sum());
