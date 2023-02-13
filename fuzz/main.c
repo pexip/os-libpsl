@@ -1,5 +1,5 @@
 /*
- * Copyright(c) 2017-2018 Tim Ruehsen
+ * Copyright(c) 2017-2022 Tim Ruehsen
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -48,12 +48,9 @@ typedef SSIZE_T ssize_t;
 
 #include "fuzzer.h"
 
-#if defined (TEST_RUN) && defined (HAVE_FMEMOPEN)
+#if defined (TEST_RUN) && defined (HAVE_FMEMOPEN) && defined (HAVE_DIRENT_H)
 
 #include <dirent.h>
-#ifdef HAVE_ALLOCA_H
-#  include <alloca.h>
-#endif
 
 static void test_all_from(const char *dirname)
 {
@@ -62,8 +59,7 @@ static void test_all_from(const char *dirname)
 
 	if ((dirp = opendir(dirname))) {
 		while ((dp = readdir(dirp))) {
-			size_t fnamesize;
-			char *fname;
+			char fname[1024];
 			int fd;
 			struct stat st;
 			uint8_t *data;
@@ -71,9 +67,7 @@ static void test_all_from(const char *dirname)
 
 			if (*dp->d_name == '.') continue;
 
-			fnamesize = strlen(dirname) + strlen(dp->d_name) + 2;
-			fname = alloca(fnamesize);
-			snprintf(fname, fnamesize, "%s/%s", dirname, dp->d_name);
+			snprintf(fname, sizeof(fname), "%s/%s", dirname, dp->d_name);
 
 			if ((fd = open(fname, O_RDONLY)) == -1) {
 				fprintf(stderr, "Failed to open %s (%d)\n", fname, errno);
@@ -88,7 +82,7 @@ static void test_all_from(const char *dirname)
 
 			data = malloc(st.st_size);
 			if ((n = read(fd, data, st.st_size)) == st.st_size) {
-				printf("testing %u bytes from '%s'\n", (int) st.st_size, fname);
+				printf("testing %d bytes from '%s'\n", (int) n, fname);
 				LLVMFuzzerTestOneInput(data, st.st_size);
 			} else
 				fprintf(stderr, "Failed to read %d bytes from %s (%d), got %d\n", (int) st.st_size, fname, errno, (int) n);
@@ -102,38 +96,34 @@ static void test_all_from(const char *dirname)
 
 int main(int argc, char **argv)
 {
-	const char *target;
-	size_t corporadirsize = sizeof(SRCDIR) + 1 + strlen(argv[0]) + 8;
-	char *corporadir = alloca(corporadirsize);
-
 	/* if VALGRIND testing is enabled, we have to call ourselves with valgrind checking */
 	if (argc == 1) {
 		const char *valgrind = getenv("TESTS_VALGRIND");
 
 		if (valgrind && *valgrind) {
-			size_t cmdsize = strlen(valgrind) + strlen(argv[0]) + 32;
-			char *cmd = alloca(cmdsize);
+			char cmd[1024];
 
-			snprintf(cmd, cmdsize, "TESTS_VALGRIND="" %s %s", valgrind, argv[0]);
+			snprintf(cmd, sizeof(cmd), "TESTS_VALGRIND="" %s %s", valgrind, argv[0]);
 			return system(cmd) != 0;
 		}
 	}
 
-	target = strrchr(argv[0], '/');
+	const char *target = strrchr(argv[0], '/');
 	target = target ? target + 1 : argv[0];
 
-	snprintf(corporadir, corporadirsize, SRCDIR "/%s.in", target);
+	char corporadir[1024];
+	snprintf(corporadir, sizeof(corporadir), SRCDIR "/%s.in", target);
 
 	test_all_from(corporadir);
 
-	snprintf(corporadir, corporadirsize, SRCDIR "/%s.repro", target);
+	snprintf(corporadir, sizeof(corporadir), SRCDIR "/%s.repro", target);
 
 	test_all_from(corporadir);
 
 	return 0;
 }
 
-#else /* TEST_RUN && HAVE_FMEMOPEN */
+#else /* TEST_RUN && HAVE_FMEMOPEN && HAVE_DIRENT_H */
 
 #ifndef __AFL_LOOP
 static int __AFL_LOOP(int n)
@@ -169,4 +159,4 @@ int main(int argc, char **argv)
 #endif
 }
 
-#endif /* TEST_RUN && HAVE_FMEMOPEN*/
+#endif /* TEST_RUN && HAVE_FMEMOPEN && HAVE_DIRENT_H */

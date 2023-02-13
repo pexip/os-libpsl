@@ -1,3 +1,23 @@
+libpsl (0.21.2-1) unstable; urgency=low
+
+  * New upstream version 0.21.2 (Closes: #1028857)
+  * drop patches already upstream
+  * move to dh 13
+  * absorb changes from previous NMUs
+  * clean up debian build process
+  * adapt to new format of upstream tag names
+  * d/watch: look at git repository directly
+  * Standards-Version: bump to 4.6.2 (no changes needed)
+  * Import gnulib visibility macro
+  * revert parts of 0.21.0-1.1 to avoid a build-dependency loop
+    (Closes: #962740)
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Daniel Kahn Gillmor <dkg@fifthhorseman.net>  Mon, 13 Feb 2023 13:57:37 -0500
+
 libpsl (0.21.0-1.2) unstable; urgency=medium
 
   * Non-maintainer upload.

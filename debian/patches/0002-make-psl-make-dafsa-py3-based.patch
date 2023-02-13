@@ -8,10 +8,10 @@ Subject: make psl-make-dafsa py3-based
  2 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index cd504b3..9bd3631 100644
+index bb8b345..565c4e2 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -69,8 +69,8 @@ AC_ARG_ENABLE([man],
+@@ -71,8 +71,8 @@ AC_ARG_ENABLE([man],
    ], [ enable_man=no ])
  AM_CONDITIONAL(ENABLE_MAN, test x$enable_man = xyes)
  
@@ -23,7 +23,7 @@ index cd504b3..9bd3631 100644
  PKG_PROG_PKG_CONFIG
  
 diff --git a/src/psl-make-dafsa b/src/psl-make-dafsa
-index 2bfd879..13afac9 100755
+index a7480bb..3537a5d 100755
 --- a/src/psl-make-dafsa
 +++ b/src/psl-make-dafsa
 @@ -1,4 +1,4 @@

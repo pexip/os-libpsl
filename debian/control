@@ -4,7 +4,8 @@ Maintainer: Tim Rühsen <tim.ruehsen@gmx.de>
 Uploaders:
  Daniel Kahn Gillmor <dkg@fifthhorseman.net>,
 Build-Depends:
- debhelper-compat (= 12),
+ debhelper-compat (= 13),
+Build-Depends-Arch:
  autoconf-archive,
  automake,
  gtk-doc-tools,
@@ -13,7 +14,7 @@ Build-Depends:
  pkg-config,
  publicsuffix (>= 20150507),
  python3:any,
-Standards-Version: 4.5.0
+Standards-Version: 4.6.2
 Section: libs
 Homepage: https://github.com/rockdaboot/libpsl
 Vcs-Git: https://salsa.debian.org/debian/libpsl.git

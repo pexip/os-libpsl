@@ -1,5 +1,5 @@
 /*
- * Copyright(c) 2014-2018 Tim Ruehsen
+ * Copyright(c) 2014-2022 Tim Ruehsen
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -30,6 +30,10 @@
 
 #if HAVE_CONFIG_H
 # include <config.h>
+#endif
+
+#ifdef _WIN32
+# include <winsock2.h> // WSAStartup, WSACleanup
 #endif
 
 #include <stdio.h>
@@ -109,6 +113,18 @@ static void test_psl(void)
 
 int main(int argc, const char * const *argv)
 {
+#ifdef _WIN32
+	WSADATA wsa_data;
+	int err;
+
+	if ((err = WSAStartup(MAKEWORD(2,2), &wsa_data))) {
+		printf("WSAStartup failed with error: %d\n", err);
+		return 1;
+	}
+
+	atexit((void (__cdecl*)(void)) WSACleanup);
+#endif
+
 	/* if VALGRIND testing is enabled, we have to call ourselves with valgrind checking */
 	if (argc == 1) {
 		const char *valgrind = getenv("TESTS_VALGRIND");

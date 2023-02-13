@@ -1,2 +1,4 @@
 version=4
-https://github.com/rockdaboot/libpsl/tags .*/@PACKAGE@@ANY_VERSION@@ARCHIVE_EXT@
+opts=mode=git,pgpmode=gittag \
+https://github.com/rockdaboot/libpsl.git \
+refs/tags/@ANY_VERSION@
