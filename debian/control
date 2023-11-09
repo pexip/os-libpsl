@@ -20,7 +20,7 @@ Homepage: https://github.com/rockdaboot/libpsl
 Vcs-Git: https://salsa.debian.org/debian/libpsl.git
 Vcs-Browser: https://salsa.debian.org/debian/libpsl
 Rules-Requires-Root: no
-XS-Pexip-Upstream: http://deb.debian.org/debian/ bullseye
+XS-Pexip-Upstream: http://deb.debian.org/debian/ bookworm
 
 Package: libpsl-dev
 Section: libdevel
