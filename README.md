@@ -106,6 +106,24 @@ See the LICENSE file that accompanies this distribution for the full text of the
 src/psl-make-dafsa and src/lookup_string_in_fixed_set.c are licensed under the term written in
 src/LICENSE.chromium.
 
+Building from tarball
+---------------------
+
+Choose a release from https://github.com/rockdaboot/libpsl/tags an download the tarball
+named `libpsl-{version}.tar.*`. Unpack with `tar xf <filename>`, cd into the libsl* directory.
+
+Build with
+```
+./configure
+make
+make check
+```
+
+Install with
+```
+sudo make install
+```
+
 Building from git
 -----------------
 
@@ -125,7 +143,8 @@ If you prefer a `meson` build
 		ninja -C builddir
 		ninja -C builddir test
 
-There is also an unofficial MSVC nmake build configuration in `msvc/`.
+There is also an unofficial MSVC nmake build configuration in `msvc/`.   Please
+see README.MSVC.md on building libpsl with Visual Studio via NMake or Meson.
 
 
 Mailing List
