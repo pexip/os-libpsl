@@ -1,1 +1,5 @@
+# We do not install libtool library descriptions:
 usr/lib/*/libpsl.la
+# This is installed from src/psl-make-dafsa.1, to avoid a build-dependency loop
+# (see #962740)
+usr/share/man/man1/psl-make-dafsa.1

@@ -13,15 +13,7 @@ AM_LDFLAGS = -no-install
 # Do not call test-registrable-domain here: it would fail due to missing punycode entries in PSL file.
 PSL_TESTS = test-is-public test-is-public-all test-is-cookie-domain-acceptable
 
-if BUILTIN_GENERATOR_LIBICU
-  PSL_TESTS += test-is-public-builtin test-registrable-domain
-endif
-
-if BUILTIN_GENERATOR_LIBIDN2
-  PSL_TESTS += test-is-public-builtin test-registrable-domain
-endif
-
-if BUILTIN_GENERATOR_LIBIDN
+if ENABLE_BUILTIN
   PSL_TESTS += test-is-public-builtin test-registrable-domain
 endif
 
@@ -33,10 +25,12 @@ TESTS = $(PSL_TESTS)
 # dafsa.psl and dafsa_ascii.psl must be created before any test is executed
 # check-local target works in parallel to the tests, so the test suite will likely fail
 BUILT_SOURCES = psl.dafsa psl_ascii.dafsa
-psl.dafsa: $(top_srcdir)/list/public_suffix_list.dat
-	$(top_srcdir)/src/psl-make-dafsa --output-format=binary "$(PSL_FILE)" psl.dafsa
-psl_ascii.dafsa: $(top_srcdir)/list/public_suffix_list.dat
-	$(top_srcdir)/src/psl-make-dafsa --output-format=binary --encoding=ascii "$(PSL_FILE)" psl_ascii.dafsa
+psl.dafsa: $(PSL_FILE)
+	$(PYTHON) $(top_srcdir)/src/psl-make-dafsa --output-format=binary "$(PSL_FILE)" psl.dafsa
+psl_ascii.dafsa: $(PSL_FILE)
+	$(PYTHON) $(top_srcdir)/src/psl-make-dafsa --output-format=binary --encoding=ascii "$(PSL_FILE)" psl_ascii.dafsa
 
 clean-local:
 	rm -f psl.dafsa psl_ascii.dafsa
+
+EXTRA_DIST = meson.build

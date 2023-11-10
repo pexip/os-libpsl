@@ -1,5 +1,5 @@
 /*
- * Copyright(c) 2014-2018 Tim Ruehsen
+ * Copyright(c) 2014-2022 Tim Ruehsen
  *
  * Permission is hereby granted, free of charge, to any person obtaining a
  * copy of this software and associated documentation files (the "Software"),
@@ -82,8 +82,8 @@ static void test_psl(void)
 		{ ".forgot.his.name", 1, 1 },
 		{ "whoever.his.name", 0, 0 },
 		{ "whoever.forgot.his.name", 0, 0 },
-		{ "whatever.platform.sh", 1, 1 },
-		{ ".platform.sh", 1, 1 },
+		{ "whatever.platformsh.site", 1, 1 },
+		{ ".platformsh.site", 1, 1 },
 		{ "whatever.yokohama.jp", 1, 1 },
 		{ ".yokohama.jp", 1, 1 },
 		{ ".", 1, 0 }, /* special case */

@@ -1,12 +1,12 @@
 psl_dafsa = custom_target('psl.dafsa',
   input : psl_file,
   output : 'psl.dafsa',
-  command : [psl_make_dafsa, '--output-format=binary', '@INPUT@', '@OUTPUT@'])
+  command : [python, psl_make_dafsa, '--output-format=binary', '@INPUT@', '@OUTPUT@'])
 
 psl_ascii_dafsa = custom_target('psl_ascii.dafsa',
   input : psl_file,
   output : 'psl_ascii.dafsa',
-  command : [psl_make_dafsa, '--output-format=binary', '--encoding=ascii', '@INPUT@', '@OUTPUT@'])
+  command : [python, psl_make_dafsa, '--output-format=binary', '--encoding=ascii', '@INPUT@', '@OUTPUT@'])
 
 tests_cargs = [
   '-DHAVE_CONFIG_H',
@@ -23,7 +23,7 @@ tests = [
   'test-is-cookie-domain-acceptable',
 ]
 
-if enable_builtin != 'no'
+if enable_builtin
   tests += ['test-is-public-builtin', 'test-registrable-domain']
 endif
 
@@ -32,6 +32,8 @@ foreach test_name : tests
   exe = executable(test_name, source,
     c_args : tests_cargs,
     link_with : libpsl,
-    include_directories : [configinc, includedir])
+    include_directories : configinc,
+    link_language : link_language,
+    dependencies : [libpsl_dep, networking_deps])
   test(test_name, exe, depends : [psl_dafsa, psl_ascii_dafsa])
 endforeach
